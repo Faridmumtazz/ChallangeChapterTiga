@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".DuaFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <EditText
+        android:id="@+id/et_user"
+        android:layout_width="290dp"
+        android:background="@drawable/kotak"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:paddingStart="15dp"
+        android:hint="Masukan Nama" />
+    <Button
+        android:id="@+id/gototiga"
+        android:text="Go To Screen 3"
+        android:layout_below="@+id/et_user"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+
+</RelativeLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_component"
+    app:startDestination="@id/satuFragment2">
+    <fragment
+        android:id="@+id/satuFragment2"
+        android:name="mumtaz.binar.challangechaptertiga.SatuFragment"
+        android:label="fragment_satu"
+        tools:layout="@layout/fragment_satu" >
+        <action
+            android:id="@+id/action_satuFragment2_to_duaFragment2"
+            app:destination="@id/duaFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/duaFragment2"
+        android:name="mumtaz.binar.challangechaptertiga.DuaFragment"
+        android:label="fragment_dua"
+        tools:layout="@layout/fragment_dua" >
+        <action
+            android:id="@+id/action_duaFragment2_to_tigaFragment"
+            app:destination="@id/tigaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tigaFragment"
+        android:name="mumtaz.binar.challangechaptertiga.TigaFragment"
+        android:label="fragment_tiga"
+        tools:layout="@layout/fragment_tiga" >
+        <action
+            android:id="@+id/action_tigaFragment_to_empatFragment2"
+            app:destination="@id/empatFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/empatFragment2"
+        android:name="mumtaz.binar.challangechaptertiga.EmpatFragment"
+        android:label="fragment_empat"
+        tools:layout="@layout/fragment_empat" >
+
+        <action
+            android:id="@+id/action_empatFragment2_to_tigaFragment"
+            app:destination="@id/tigaFragment" />
+    </fragment>
+</navigation>
