@@ -1,5 +1,6 @@
 package mumtaz.binar.challangechaptertiga
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -21,33 +22,42 @@ class TigaFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_tiga, container, false)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val datauser = arguments?.getString("NAMA")
-        tv_user.text = datauser
+        if (arguments?.containsKey("USERDATA") == true){
+            val datauser = arguments?.getParcelable<DataUser>("USERDATA")
+            val nama = datauser?.nama
+            val usia = datauser?.usia
+            val alamat = datauser?.alamat
+            val pekerjaan = datauser?.pekerjaan
+            val ket = if (usia?.rem(2) == 0){
+                "Genap"
+            }else{
+                "Ganjil"
+            }
+            tv_user.text = "Nama Saya : $nama\n" +
+                    "Usia : $usia, $ket\n" +
+                    "Alamat : $alamat\n" +
+                    "Pekerjaan : $pekerjaan"
+        }else{
+            val nama = arguments?.getString("NAMA")
+            tv_user.setText("Nama saya : $nama")
+        }
 
 
         keempat.setOnClickListener {
-            val datanama = bundleOf("NAMADUA" to datauser)
-            Navigation.findNavController(view).navigate(R.id.action_tigaFragment_to_empatFragment2, datanama)
-
+            val nama = if (arguments?.containsKey("USERDATA") == true){
+                arguments?.getParcelable<DataUser>("NAMA")
+            }else{
+                arguments?.getString("NAMA")
+            }
+            val kirimnama = bundleOf("NAMA" to nama)
+            Navigation.findNavController(view).navigate(R.id.action_tigaFragment_to_empatFragment2, kirimnama)
 
         }
 
-        val datanamadua = arguments?.getString("NAMATIGA")
-        tv_userr.text = datanamadua
-        val dataumur = arguments?.getString("UMUR")
-        tv_usiaa.text = dataumur
-
-        val keterangan = arguments?.getString("KETERANGAN")
-        tv_ket.text = keterangan
-
-        val datalamat = arguments?.getString("ALAMAT")
-        tv_alamatt.text = datalamat
-
-        val datakerja = arguments?.getString("PEKERJAAN")
-        tv_pekerjaann.text = datakerja
 
 
     }

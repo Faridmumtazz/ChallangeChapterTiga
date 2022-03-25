@@ -28,20 +28,23 @@ class EmpatFragment : Fragment() {
 
 
         goback.setOnClickListener {
-            val username = arguments?.getString("NAMADUA")
-            val umur = et_usia.text.toString().toInt()
-            val alamat = et_alamat.text.toString()
-            val pekerjaan = et_pekerjaan.text.toString()
-            val keterangan = if (umur!!.toInt() % 2 == 0){
-                "Genap"
-            }else {
-                 "Ganjil"
+            if (et_usia.text.isNotEmpty() && et_alamat.text.isNotEmpty() && et_pekerjaan.text.isNotEmpty()){
+                if (et_usia.text.toString().all { Character.isDigit(it) }){
+                    val nama = arguments?.getString("NAMA")
+                    val usia = et_usia.text.toString().toInt()
+                    val alamat = et_alamat.text.toString()
+                    val pekerjaan = et_pekerjaan.text.toString()
+                    val getData = DataUser(nama, usia, alamat, pekerjaan)
+                    val sendData = bundleOf("USERDATA" to getData)
+                    Navigation.findNavController(view).navigate(R.id.action_empatFragment2_to_tigaFragment, sendData)
+                }else{
+                    " Gagal "
+                }
+
+            }else{
+                " Gagal "
             }
 
-            val data = bundleOf("UMUR" to umur.toString(), "NAMATIGA" to username, "ALAMAT" to alamat, "PEKERJAAN" to pekerjaan, "KETERANGAN" to keterangan)
-
-
-            Navigation.findNavController(view).navigate(R.id.action_empatFragment2_to_tigaFragment, data)
         }
     }
 
